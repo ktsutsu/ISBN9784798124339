@@ -1,14 +1,159 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".NumericPuzzle" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/image_button1"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button2"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button3"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button4"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/image_button5"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button6"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button7"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button8"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/image_button9"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button10"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button11"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button12"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/image_button13"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button14"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button15"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+                <ImageButton
+                    android:id="@+id/image_button16"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
+                    android:layout_margin="1px" />
+
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time" />
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
