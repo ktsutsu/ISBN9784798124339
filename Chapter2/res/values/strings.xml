@@ -2,7 +2,6 @@
 
     <string name="app_name">数字合わせパズル</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_numeric_puzzle">NumericPuzzle</string>
     <string name="time">"経過時間　"</string>
     <string name="chronometer_format">%s</string>
     <string name="start">スタート</string>
