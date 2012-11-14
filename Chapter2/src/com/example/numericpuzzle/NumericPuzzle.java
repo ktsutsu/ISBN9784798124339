@@ -2,6 +2,7 @@ package com.example.numericpuzzle;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.app.Activity;
 
 public class NumericPuzzle extends Activity {
@@ -27,6 +28,24 @@ public class NumericPuzzle extends Activity {
 	}
 
 	class OrderController implements View.OnClickListener {
+		ImageButton imgBtn;
+		int idx = 0;
+		int curImageId = 0;
+
+		public OrderController(ImageButton ibtn, int i, int resid) {
+			imgBtn = ibtn;
+			idx = i;
+			setImageRes(resid);
+			imgBtn.setOnClickListener(this);
+		}
+
+		// ボタンに画像を設定
+		public int setImageRes(int resid) {
+			int old = curImageId;
+			curImageId = resid;
+			imgBtn.setImageResource(curImageId);
+			return old;
+		}
 
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
