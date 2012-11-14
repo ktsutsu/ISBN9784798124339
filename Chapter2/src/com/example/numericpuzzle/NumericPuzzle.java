@@ -20,11 +20,23 @@ public class NumericPuzzle extends Activity {
 			R.drawable.num10, R.drawable.num11, R.drawable.num12,
 			R.drawable.num13, R.drawable.num14, R.drawable.num15,
 			R.drawable.blank };
+	OrderController orders[] = new OrderController[imageButtons.length];
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_numeric_puzzle);
+		createOrderController();
+	}
+
+	// OrderControllerをまとめて全部生成
+	private void createOrderController() {
+		for (int i = 0; i < imageButtons.length; i++) {
+			// リソースidからimgBtnを取得
+			ImageButton imgbtn = (ImageButton) findViewById(imageButtons[i]);
+			// OrderControllerを生成
+			orders[i] = new OrderController(imgbtn, i, numImages[i]);
+		}
 	}
 
 	class OrderController implements View.OnClickListener {
