@@ -119,6 +119,11 @@ public class NumericPuzzle extends Activity {
 			return old;
 		}
 
+		// 画像リソースidを返す
+		public int getImageRes() {
+			return curImageId;
+		}
+
 		public void onClick(View v) {
 			// blank画像クリック時は反応させない
 			if (curImageId == R.drawable.blank) {
