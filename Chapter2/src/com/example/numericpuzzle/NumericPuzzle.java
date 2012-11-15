@@ -175,5 +175,11 @@ public class NumericPuzzle extends Activity {
 
 			// TODO パズル完成チェック処理
 		}
+
+		// otherの画像と現在の画像を交換する
+		public void swapImage(OrderController other) {
+			int previous = other.setImageRes(curImageId);
+			setImageRes(previous);
+		}
 	}
 }
