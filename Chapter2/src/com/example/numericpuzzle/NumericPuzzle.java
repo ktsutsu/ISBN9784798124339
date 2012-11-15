@@ -28,6 +28,7 @@ public class NumericPuzzle extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_numeric_puzzle);
 		createOrderController();
+		setStartButtonListener();
 	}
 
 	// OrderControllerをまとめて全部生成
@@ -171,6 +172,17 @@ public class NumericPuzzle extends Activity {
 			// 隣と画像交換
 			orders[i].swapImage(orders[i - 1]);
 		}
+	}
+
+	// スタートボタン押下時処理
+	private void setStartButtonListener() {
+		Button btn = (Button) findViewById(R.id.start_button);
+		btn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// TODO ゲーム開始処理
+				// TODO タイマー開始処理
+			}
+		});
 	}
 
 	class OrderController implements View.OnClickListener {
