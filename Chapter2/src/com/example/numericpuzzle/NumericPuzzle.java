@@ -79,23 +79,65 @@ public class NumericPuzzle extends Activity {
 		}
 	}
 
+	// 上方向検索処理
 	private boolean searchUp(int idx) {
-		// TODO Auto-generated method stub
+		int distance = 0;
+		// 指定対象の上の行から検索する
+		for (int i = idx - 4; i > -1; i -= 4) {
+			distance--;
+			if (orders[i].getImageRes() == R.drawable.blank) {
+				// TODO 画像交換処理
+				return true;
+			}
+		}
 		return false;
 	}
 
+	// 下方向検索処理
 	private boolean searchDown(int idx) {
-		// TODO Auto-generated method stub
+		int distance = 0;
+		// 指定対象の下の行から検索する
+		for (int i = idx + 4; i < 16; i += 4) {
+			distance++;
+			if (orders[i].getImageRes() == R.drawable.blank) {
+				// TODO 画像交換処理
+				return true;
+			}
+		}
 		return false;
 	}
 
+	// 左方向検索処理
 	private boolean searchLeft(int idx) {
-		// TODO Auto-generated method stub
+		int distance = 0;
+		int min = 0;
+		// 同列の最小数を取得
+		min = idx - (idx % 4);
+		// 指定対象の左の行から検索する
+		for (int i = idx - 1; i >= min; i--) {
+			distance--;
+			if (orders[i].getImageRes() == R.drawable.blank) {
+				// TODO 画像交換処理
+				return true;
+			}
+		}
 		return false;
 	}
 
+	// 右方向検索処理
 	private boolean searchRight(int idx) {
-		// TODO Auto-generated method stub
+		int distance = 0;
+		int max = 15;
+		// 最大数(次列の最小数)を取得
+		max = idx - (idx % 4) + 4;
+		// 指定対象の右の行から検索する
+		for (int i = idx + 1; i < max; i++) {
+			distance++;
+			if (orders[i].getImageRes() == R.drawable.blank) {
+				// TODO 画像交換処理
+				return true;
+			}
+		}
 		return false;
 	}
 
