@@ -41,7 +41,7 @@ public class NumericPuzzle extends Activity {
 	}
 
 	private void searchDir(int idx) {
-		// 上下左右検索チェックフラグ
+		// 上下左右blank画像検索チェックフラグ
 		boolean searchRight = true;
 		boolean searchLeft = true;
 		boolean searchUp = true;
@@ -64,7 +64,39 @@ public class NumericPuzzle extends Activity {
 			searchRight = false;
 		}
 
-		// TODO 各方向チェック処理
+		// 上下左右を検索する。blank画像が見つかれば他方向の検索は不要
+		if (searchUp && searchUp(idx)) {
+			return;
+		}
+		if (searchDown && searchDown(idx)) {
+			return;
+		}
+		if (searchLeft && searchLeft(idx)) {
+			return;
+		}
+		if (searchRight && searchRight(idx)) {
+			return;
+		}
+	}
+
+	private boolean searchUp(int idx) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean searchDown(int idx) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean searchLeft(int idx) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean searchRight(int idx) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	class OrderController implements View.OnClickListener {
