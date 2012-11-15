@@ -86,7 +86,7 @@ public class NumericPuzzle extends Activity {
 		for (int i = idx - 4; i > -1; i -= 4) {
 			distance--;
 			if (orders[i].getImageRes() == R.drawable.blank) {
-				// TODO 画像交換処理
+				swapUp(idx, distance);
 				return true;
 			}
 		}
@@ -100,7 +100,7 @@ public class NumericPuzzle extends Activity {
 		for (int i = idx + 4; i < 16; i += 4) {
 			distance++;
 			if (orders[i].getImageRes() == R.drawable.blank) {
-				// TODO 画像交換処理
+				swapDown(idx, distance);
 				return true;
 			}
 		}
@@ -117,7 +117,7 @@ public class NumericPuzzle extends Activity {
 		for (int i = idx - 1; i >= min; i--) {
 			distance--;
 			if (orders[i].getImageRes() == R.drawable.blank) {
-				// TODO 画像交換処理
+				swapLeft(idx, distance);
 				return true;
 			}
 		}
@@ -134,11 +134,43 @@ public class NumericPuzzle extends Activity {
 		for (int i = idx + 1; i < max; i++) {
 			distance++;
 			if (orders[i].getImageRes() == R.drawable.blank) {
-				// TODO 画像交換処理
+				swapRight(idx, distance);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	// 指定distance分上に詰める
+	private void swapUp(int idx, int distance) {
+		for (int i = idx + (distance * 4); i > idx; i += 4) {
+			// 隣と画像交換
+			orders[i].swapImage(orders[i + 4]);
+		}
+	}
+
+	// 指定distance分下に詰める
+	private void swapDown(int idx, int distance) {
+		for (int i = idx + (distance * 4); i > idx; i -= 4) {
+			// 隣と画像交換
+			orders[i].swapImage(orders[i - 4]);
+		}
+	}
+
+	// 指定distance分左に詰める
+	private void swapLeft(int idx, int distance) {
+		for (int i = idx + distance; i < idx; i++) {
+			// 隣と画像交換
+			orders[i].swapImage(orders[i + 1]);
+		}
+	}
+
+	// 指定distance分右に詰める
+	private void swapRight(int idx, int distance) {
+		for (int i = idx + distance; i > idx; i--) {
+			// 隣と画像交換
+			orders[i].swapImage(orders[i - 1]);
+		}
 	}
 
 	class OrderController implements View.OnClickListener {
