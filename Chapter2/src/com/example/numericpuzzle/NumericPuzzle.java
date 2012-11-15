@@ -2,6 +2,7 @@ package com.example.numericpuzzle;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.app.Activity;
 
@@ -39,6 +40,33 @@ public class NumericPuzzle extends Activity {
 		}
 	}
 
+	private void searchDir(int idx) {
+		// 上下左右検索チェックフラグ
+		boolean searchRight = true;
+		boolean searchLeft = true;
+		boolean searchUp = true;
+		boolean searchDown = true;
+
+		// 1行目なので上は検索しない
+		if (idx < 4) {
+			searchUp = false;
+		}
+		// 4行目なので下は検索しない
+		if (idx > 11) {
+			searchDown = false;
+		}
+		// 1列目なので左は検索しない
+		if ((idx % 4) == 0) {
+			searchLeft = false;
+		}
+		// 一行目なので上は検索しない
+		if ((idx % 4) == 3) {
+			searchRight = false;
+		}
+
+		// TODO 各方向チェック処理
+	}
+
 	class OrderController implements View.OnClickListener {
 		ImageButton imgBtn;
 		int idx = 0;
@@ -60,8 +88,13 @@ public class NumericPuzzle extends Activity {
 		}
 
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
+			// blank画像クリック時は反応させない
+			if (curImageId == R.drawable.blank) {
+				return;
+			}
+			searchDir(idx);
 
+			// TODO パズル完成チェック処理
 		}
 	}
 }
