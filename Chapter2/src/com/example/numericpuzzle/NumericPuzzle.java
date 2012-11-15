@@ -143,7 +143,7 @@ public class NumericPuzzle extends Activity {
 
 	// 指定distance分上に詰める
 	private void swapUp(int idx, int distance) {
-		for (int i = idx + (distance * 4); i > idx; i += 4) {
+		for (int i = idx + (distance * 4); i < idx; i += 4) {
 			// 隣と画像交換
 			orders[i].swapImage(orders[i + 4]);
 		}
