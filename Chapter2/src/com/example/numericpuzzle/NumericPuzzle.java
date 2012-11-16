@@ -22,7 +22,7 @@ public class NumericPuzzle extends Activity {
 			R.drawable.num13, R.drawable.num14, R.drawable.num15,
 			R.drawable.blank };
 	// ゲーム開始フラグ
-	boolean gameStarted = false;
+	private boolean gameStarted = false;
 	OrderController orders[] = new OrderController[imageButtons.length];
 
 	@Override
@@ -48,10 +48,21 @@ public class NumericPuzzle extends Activity {
 		int size = numImages.length;
 		// 最後のマス目は交換しないので-2
 		for (int i = 0; i < size - 2; i++) {
-			int swap = (int) (Math.random() * (size - (i - 1)));
+			int swap = (int) (Math.random() * (size - (i + 1)));
 			orders[i].swapImage(orders[i + swap]);
 		}
 		gameStarted = true;
+	}
+
+	// スタートボタン押下時処理
+	private void setStartButtonListener() {
+		Button btn = (Button) findViewById(R.id.start_button);
+		btn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				startGame();
+				// TODO タイマー開始処理
+			}
+		});
 	}
 
 	private void searchDir(int idx) {
@@ -185,17 +196,6 @@ public class NumericPuzzle extends Activity {
 			// 隣と画像交換
 			orders[i].swapImage(orders[i - 1]);
 		}
-	}
-
-	// スタートボタン押下時処理
-	private void setStartButtonListener() {
-		Button btn = (Button) findViewById(R.id.start_button);
-		btn.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				startGame();
-				// TODO タイマー開始処理
-			}
-		});
 	}
 
 	class OrderController implements View.OnClickListener {
