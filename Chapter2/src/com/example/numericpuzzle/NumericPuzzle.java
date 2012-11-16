@@ -56,6 +56,20 @@ public class NumericPuzzle extends Activity {
 		gameStarted = true;
 	}
 
+	// 完成チェック
+	private boolean isComplete() {
+		if (!gameStarted) {
+			return false;
+		}
+		// 全マス順番にチェックする
+		for (int i = 0; i < numImages.length; i++) {
+			if (numImages[i] != orders[i].getImageRes()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	// タイマー開始処理
 	private void startChronometer() {
 		Chronometer chrono = (Chronometer) findViewById(R.id.chronometer);
@@ -240,7 +254,9 @@ public class NumericPuzzle extends Activity {
 			}
 			searchDir(idx);
 
-			// TODO パズル完成チェック処理
+			if (isComplete()) {
+				// TODO 完成後処理
+			}
 		}
 
 		// otherの画像と現在の画像を交換する
