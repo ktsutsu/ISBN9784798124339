@@ -1,8 +1,10 @@
 package com.example.numericpuzzle;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.app.Activity;
 
@@ -54,13 +56,21 @@ public class NumericPuzzle extends Activity {
 		gameStarted = true;
 	}
 
+	// タイマー開始処理
+	private void startChronometer() {
+		Chronometer chrono = (Chronometer) findViewById(R.id.chronometer);
+		// 基準時刻としてデバイスが起動してから経過した時間を設定
+		chrono.setBase(SystemClock.elapsedRealtime());
+		chrono.start();
+	}
+
 	// スタートボタン押下時処理
 	private void setStartButtonListener() {
 		Button btn = (Button) findViewById(R.id.start_button);
 		btn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				startGame();
-				// TODO タイマー開始処理
+				startChronometer();
 			}
 		});
 	}
