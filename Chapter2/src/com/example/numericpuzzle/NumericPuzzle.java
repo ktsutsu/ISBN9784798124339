@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 public class NumericPuzzle extends Activity {
 	// ボタンリソースidリスト
@@ -78,6 +80,13 @@ public class NumericPuzzle extends Activity {
 		chrono.start();
 	}
 
+	// タイマー停止処理
+	private long stopChronometer() {
+		Chronometer chrono = (Chronometer) findViewById(R.id.chronometer);
+		chrono.stop();
+		return SystemClock.elapsedRealtime() - chrono.getBase();
+	}
+
 	// スタートボタン押下時処理
 	private void setStartButtonListener() {
 		Button btn = (Button) findViewById(R.id.start_button);
@@ -87,6 +96,22 @@ public class NumericPuzzle extends Activity {
 				startChronometer();
 			}
 		});
+	}
+
+	// 完成後処理
+	private void complete() {
+		long msec = stopChronometer();
+		AlertDialog.Builder alertDlgBld = new AlertDialog.Builder(this);
+		alertDlgBld.setTitle(R.string.complete_title);
+		alertDlgBld.setMessage(msec / 1000 + " 秒");
+		alertDlgBld.setPositiveButton(R.string.complete_title,
+				new DialogInterface.OnClickListener() {
+					// ボタンが押されたらダイアログを閉じる
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
+		alertDlgBld.show();
 	}
 
 	private void searchDir(int idx) {
@@ -255,7 +280,7 @@ public class NumericPuzzle extends Activity {
 			searchDir(idx);
 
 			if (isComplete()) {
-				// TODO 完成後処理
+				complete();
 			}
 		}
 
