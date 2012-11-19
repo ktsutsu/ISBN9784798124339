@@ -59,7 +59,7 @@ public class NumericPuzzle extends Activity {
 	}
 
 	// 完成チェック
-	private boolean isComplete() {
+	private boolean isCompleted() {
 		if (!gameStarted) {
 			return false;
 		}
@@ -279,7 +279,7 @@ public class NumericPuzzle extends Activity {
 			}
 			searchDir(idx);
 
-			if (isComplete()) {
+			if (isCompleted()) {
 				complete();
 			}
 		}
