@@ -8,6 +8,7 @@ import android.app.Activity;
 
 public class LimitedMail extends Activity implements View.OnClickListener {
 	private EditText edit01;
+	private EditText edit02;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,13 @@ public class LimitedMail extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(edit01);
+		// エディットテキスト（件名）の作成
+		edit02 = new EditText(this);
+		edit02.setText("ごめん、飲み行く");
+		edit02.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(edit02);
 	}
 
 	@Override
