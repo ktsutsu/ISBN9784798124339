@@ -2,6 +2,7 @@ package com.example.limitedmail;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.app.Activity;
@@ -39,6 +40,14 @@ public class LimitedMail extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(edit03);
+		// ボタンの生成
+		Button btn = new Button(this);
+		btn.setText("メールを送信する");
+		btn.setOnClickListener(this);
+		btn.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btn);
 	}
 
 	@Override
