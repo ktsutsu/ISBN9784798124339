@@ -1,9 +1,14 @@
 package com.example.limitedcall;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
+import android.content.Intent;
 
 public class LimitedCall extends Activity {
 
@@ -22,5 +27,22 @@ public class LimitedCall extends Activity {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(txtView);
+
+		// ボタンの生成
+		Button btn = new Button(this);
+		btn.setText("このボタンを押すと電話をかける");
+		// ボタンの動作を設定
+		btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Uri uri = Uri.parse("tel:0000000000");
+				Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+				startActivity(intent);
+			}
+		});
+		btn.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btn);
 	}
 }
