@@ -36,7 +36,7 @@ public class LimitedCall extends Activity {
 			@Override
 			public void onClick(View v) {
 				Uri uri = Uri.parse("tel:0000000000");
-				Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+				Intent intent = new Intent(Intent.ACTION_CALL, uri);
 				startActivity(intent);
 			}
 		});
