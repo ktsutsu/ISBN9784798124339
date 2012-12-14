@@ -1,11 +1,13 @@
 package com.example.limitedmail;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.app.Activity;
+import android.content.Intent;
 
 public class LimitedMail extends Activity implements View.OnClickListener {
 	private EditText edit01;
@@ -52,6 +54,12 @@ public class LimitedMail extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		Uri uri = Uri.parse("mailto:" + edit01.getText().toString());
+		Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+		intent.putExtra(Intent.EXTRA_SUBJECT, edit02.getText().toString());
+		intent.putExtra(Intent.EXTRA_TEXT, edit03.getText().toString());
+		// 新しいタスクとして起動
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
 	}
 }
