@@ -12,6 +12,7 @@ public class TestPreference extends Activity implements View.OnClickListener {
 	EditText edit01;
 	Button btnPut;
 	Button btnGet;
+	Button btnDel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,15 @@ public class TestPreference extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(btnGet);
+
+		// 削除ボタン作成
+		btnDel = new Button(this);
+		btnDel.setText("削除");
+		btnDel.setOnClickListener(this);
+		btnDel.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btnDel);
 	}
 
 	@Override
