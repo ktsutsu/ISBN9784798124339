@@ -49,11 +49,11 @@ public class TestPreference extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		// プライベートモードでプリファレンスにアクセス
+		SharedPreferences prefer = getSharedPreferences("TestPreference",
+				MODE_PRIVATE);
 		if (v == btnPut) {
 			// 保存ボタン押下時処理
-			// プライベートモードでプリファレンスにアクセス
-			SharedPreferences prefer = getSharedPreferences("TestPreference",
-					MODE_PRIVATE);
 			SharedPreferences.Editor editor = prefer.edit();
 			// setting1というキーに文字列を保存
 			editor.putString("settings1", edit01.getText().toString());
@@ -61,8 +61,6 @@ public class TestPreference extends Activity implements View.OnClickListener {
 			editor.commit();
 		} else if (v == btnGet) {
 			// 読込みボタン押下時処理
-			SharedPreferences prefer = getSharedPreferences("TestPreference",
-					MODE_PRIVATE);
 			// 入力ボックスに読込んだ文字列を出力
 			edit01.setText(prefer.getString("settings1", ""));
 		}
