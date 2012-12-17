@@ -10,6 +10,7 @@ import android.app.Activity;
 public class TestPreference extends Activity implements View.OnClickListener {
 	EditText edit01;
 	Button btnPut;
+	Button btnGet;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,15 @@ public class TestPreference extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(btnPut);
+
+		// 読込みボタン作成
+		btnGet = new Button(this);
+		btnGet.setText("読込み");
+		btnGet.setOnClickListener(this);
+		btnGet.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btnGet);
 	}
 
 	@Override
