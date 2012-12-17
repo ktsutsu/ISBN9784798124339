@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.app.Activity;
+import android.content.SharedPreferences;
 
 public class TestPreference extends Activity implements View.OnClickListener {
 	EditText edit01;
@@ -48,6 +49,16 @@ public class TestPreference extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		if (v == btnPut) {
+			// 保存ボタン押下時処理
+			// プライベートモードでプリファレンスにアクセス
+			SharedPreferences prefer = getSharedPreferences("TestPreference",
+					MODE_PRIVATE);
+			SharedPreferences.Editor editor = prefer.edit();
+			// setting1というキーに文字列を保存
+			editor.putString("settings1", edit01.getText().toString());
+			// プリファレンスに値を書き込み
+			editor.commit();
+		}
 	}
 }
