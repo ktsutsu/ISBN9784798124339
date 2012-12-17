@@ -59,6 +59,12 @@ public class TestPreference extends Activity implements View.OnClickListener {
 			editor.putString("settings1", edit01.getText().toString());
 			// プリファレンスに値を書き込み
 			editor.commit();
+		} else if (v == btnGet) {
+			// 読込みボタン押下時処理
+			SharedPreferences prefer = getSharedPreferences("TestPreference",
+					MODE_PRIVATE);
+			// 入力ボックスに読込んだ文字列を出力
+			edit01.setText(prefer.getString("settings1", ""));
 		}
 	}
 }
