@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
+import android.content.SharedPreferences;
 
 public class ServerCheck extends Activity implements View.OnClickListener {
 	EditText edit01;
@@ -105,5 +106,18 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 			// 例外時はエラーメッセージを返す
 			return "Error:" + e.getMessage();
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// プリファレンスの保存
+		// 他のアプリケーションからも読み込み可能なモードでプリファレンスを開く
+		SharedPreferences prefer = getPreferences(MODE_WORLD_READABLE);
+		SharedPreferences.Editor editor = prefer.edit();
+		editor.putString("sever1", edit01.getText().toString());
+		editor.putString("sever2", edit02.getText().toString());
+		editor.putString("sever3", edit03.getText().toString());
+		editor.commit();
 	}
 }
