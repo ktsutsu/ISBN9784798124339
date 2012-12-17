@@ -88,6 +88,11 @@ public class TestPreference extends Activity implements View.OnClickListener {
 			// setting1というキーの内容を削除
 			editor.remove("settings1");
 			editor.commit();
+		} else if (v == btnClear) {
+			// クリアボタン押下時処理
+			// すべてのキーの内容を削除
+			editor.clear();
+			editor.commit();
 		}
 	}
 }
