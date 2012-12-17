@@ -2,6 +2,7 @@ package com.example.servercheck;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.app.Activity;
@@ -10,6 +11,7 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	EditText edit01;
 	EditText edit02;
 	EditText edit03;
+	Button btnConnect;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,15 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(edit03);
+
+		// 接続ボタン作成
+		btnConnect = new Button(this);
+		btnConnect.setText("接続");
+		btnConnect.setOnClickListener(this);
+		btnConnect.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btnConnect);
 	}
 
 	@Override
