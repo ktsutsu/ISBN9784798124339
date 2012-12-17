@@ -13,6 +13,7 @@ public class TestPreference extends Activity implements View.OnClickListener {
 	Button btnPut;
 	Button btnGet;
 	Button btnDel;
+	Button btnClear;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,15 @@ public class TestPreference extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(btnDel);
+
+		// クリアボタン作成
+		btnClear = new Button(this);
+		btnClear.setText("クリア");
+		btnClear.setOnClickListener(this);
+		btnClear.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btnClear);
 	}
 
 	@Override
