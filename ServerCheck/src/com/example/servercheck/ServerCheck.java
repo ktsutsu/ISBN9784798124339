@@ -71,7 +71,24 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		String retStr = "";
+		// URL入力ボックス1のURLの接続チェック
+		if (edit01.getText().toString().length() > 0) {
+			retStr = doGet(edit01.getText().toString());
+			txtView.setText(edit01.getText().toString() + " " + retStr);
+		}
+		// URL入力ボックス2のURLの接続チェック
+		if (edit02.getText().toString().length() > 0) {
+			retStr = doGet(edit02.getText().toString());
+			txtView.setText(txtView.getText().toString() + "\n"
+					+ edit02.getText().toString() + " " + retStr);
+		}
+		// URL入力ボックス3のURLの接続チェック
+		if (edit03.getText().toString().length() > 0) {
+			retStr = doGet(edit03.getText().toString());
+			txtView.setText(txtView.getText().toString() + "\n"
+					+ edit03.getText().toString() + " " + retStr);
+		}
 	}
 
 	// urlにGETメソッド発行し、ステータスコードを返す
