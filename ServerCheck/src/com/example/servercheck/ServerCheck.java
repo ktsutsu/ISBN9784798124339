@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 public class ServerCheck extends Activity implements View.OnClickListener {
+	private static final String DEF_HTTP = "http://";
+
 	private EditText edit01;
 	private EditText edit02;
 	private EditText edit03;
@@ -74,18 +76,18 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	public void onClick(View v) {
 		String retStr = "";
 		// URL入力ボックス1のURLの接続チェック
-		if (edit01.getText().toString().length() > 0) {
+		if (!(DEF_HTTP.equals(edit01.getText().toString()))) {
 			retStr = doGet(edit01.getText().toString());
 			txtView.setText(edit01.getText().toString() + " " + retStr);
 		}
 		// URL入力ボックス2のURLの接続チェック
-		if (edit02.getText().toString().length() > 0) {
+		if (!(DEF_HTTP.equals(edit02.getText().toString()))) {
 			retStr = doGet(edit02.getText().toString());
 			txtView.setText(txtView.getText().toString() + "\n"
 					+ edit02.getText().toString() + " " + retStr);
 		}
 		// URL入力ボックス3のURLの接続チェック
-		if (edit03.getText().toString().length() > 0) {
+		if (!(DEF_HTTP.equals(edit03.getText().toString()))) {
 			retStr = doGet(edit03.getText().toString());
 			txtView.setText(txtView.getText().toString() + "\n"
 					+ edit03.getText().toString() + " " + retStr);
@@ -130,8 +132,9 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	// プリファレンスを読み込み、URL入力ボックスにセット
 	private void getPrefer() {
 		SharedPreferences prefer = getPreferences(MODE_WORLD_READABLE);
-		edit01.setText(prefer.getString("server1", ""));
-		edit02.setText(prefer.getString("server2", ""));
-		edit03.setText(prefer.getString("server3", ""));
+		// プリファレンスをセットする。空なら、デフォルトでhttp://をセット
+		edit01.setText(prefer.getString("server1", DEF_HTTP));
+		edit02.setText(prefer.getString("server2", DEF_HTTP));
+		edit03.setText(prefer.getString("server3", DEF_HTTP));
 	}
 }
