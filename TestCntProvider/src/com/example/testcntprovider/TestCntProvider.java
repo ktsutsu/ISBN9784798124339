@@ -1,12 +1,13 @@
 package com.example.testcntprovider;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
 
-public class TestCntProvider extends Activity {
+public class TestCntProvider extends Activity implements View.OnClickListener {
 	private Button btnQuery;
 	private TextView txtView;
 
@@ -34,5 +35,10 @@ public class TestCntProvider extends Activity {
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(txtView);
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
 	}
 }
