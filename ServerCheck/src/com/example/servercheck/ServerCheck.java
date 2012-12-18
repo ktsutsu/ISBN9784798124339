@@ -138,9 +138,9 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 		// 他のアプリケーションからも読み込み可能なモードでプリファレンスを開く
 		SharedPreferences prefer = getPreferences(MODE_WORLD_READABLE);
 		SharedPreferences.Editor editor = prefer.edit();
-		editor.putString("sever1", edit01.getText().toString());
-		editor.putString("sever2", edit02.getText().toString());
-		editor.putString("sever3", edit03.getText().toString());
+		editor.putString("server1", edit01.getText().toString());
+		editor.putString("server2", edit02.getText().toString());
+		editor.putString("server3", edit03.getText().toString());
 		editor.commit();
 	}
 
