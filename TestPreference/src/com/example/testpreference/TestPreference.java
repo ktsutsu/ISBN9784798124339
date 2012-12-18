@@ -9,11 +9,11 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 public class TestPreference extends Activity implements View.OnClickListener {
-	EditText edit01;
-	Button btnPut;
-	Button btnGet;
-	Button btnDel;
-	Button btnClear;
+	private EditText edit01;
+	private Button btnPut;
+	private Button btnGet;
+	private Button btnDel;
+	private Button btnClear;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
