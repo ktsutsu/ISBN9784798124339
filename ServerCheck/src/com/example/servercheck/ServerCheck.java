@@ -5,6 +5,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,9 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 public class ServerCheck extends Activity implements View.OnClickListener {
+	private static final int MENU_ID_ITEM1 = Menu.FIRST;
+	private static final int MENU_ID_ITEM2 = Menu.FIRST + 1;
+
 	private static final String DEF_HTTP = "http://";
 
 	private EditText edit01;
@@ -70,6 +75,16 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(txtView);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuItem item1 = menu.add(Menu.NONE, MENU_ID_ITEM1, Menu.NONE, "設定削除");
+		item1.setIcon(android.R.drawable.ic_menu_delete);
+		MenuItem item2 = menu.add(Menu.NONE, MENU_ID_ITEM2, Menu.NONE, "終了");
+		item2.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
