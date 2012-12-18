@@ -14,11 +14,11 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 public class ServerCheck extends Activity implements View.OnClickListener {
-	EditText edit01;
-	EditText edit02;
-	EditText edit03;
-	Button btnConnect;
-	TextView txtView;
+	private EditText edit01;
+	private EditText edit02;
+	private EditText edit03;
+	private Button btnConnect;
+	private TextView txtView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
