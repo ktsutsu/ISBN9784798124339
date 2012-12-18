@@ -88,6 +88,22 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_ID_ITEM1:
+			SharedPreferences prefer = getPreferences(MODE_WORLD_READABLE);
+			SharedPreferences.Editor editor = prefer.edit();
+			editor.clear();
+			editor.commit();
+			return true;
+		case MENU_ID_ITEM2:
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
 	public void onClick(View v) {
 		String retStr = "";
 		// URL入力ボックス1のURLの接続チェック
