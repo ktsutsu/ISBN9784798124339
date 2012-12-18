@@ -109,6 +109,12 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		getPrefer();
+	}
+
+	@Override
 	protected void onPause() {
 		super.onPause();
 		// プリファレンスの保存
@@ -119,5 +125,13 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 		editor.putString("sever2", edit02.getText().toString());
 		editor.putString("sever3", edit03.getText().toString());
 		editor.commit();
+	}
+
+	// プリファレンスを読み込み、URL入力ボックスにセット
+	private void getPrefer() {
+		SharedPreferences prefer = getPreferences(MODE_WORLD_READABLE);
+		edit01.setText(prefer.getString("server1", ""));
+		edit02.setText(prefer.getString("server2", ""));
+		edit03.setText(prefer.getString("server3", ""));
 	}
 }
