@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class TestCntProvider extends Activity implements View.OnClickListener {
+public class TestCntProvider extends Activity {
 	private Button btnQuery;
 	private TextView txtView;
 
@@ -21,10 +21,15 @@ public class TestCntProvider extends Activity implements View.OnClickListener {
 		layout.setOrientation(LinearLayout.VERTICAL);
 		setContentView(layout);
 
-		// 取得するボタンを作成
+		// 電話番号有リスト取得ボタンを作成
 		btnQuery = new Button(this);
-		btnQuery.setText("取得する");
-		btnQuery.setOnClickListener(this);
+		btnQuery.setText("電話番号有リスト取得");
+		btnQuery.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getContactsData();
+			}
+		});
 		btnQuery.setLayoutParams(new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -38,11 +43,6 @@ public class TestCntProvider extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(txtView);
 
-	}
-
-	@Override
-	public void onClick(View v) {
-		getContactsData();
 	}
 
 	// 連絡先を取得して、結果エリアに表示する
