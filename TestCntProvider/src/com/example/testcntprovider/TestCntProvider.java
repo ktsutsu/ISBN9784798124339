@@ -1,13 +1,13 @@
 package com.example.testcntprovider;
 
+import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.app.Activity;
-import android.database.Cursor;
 
 public class TestCntProvider extends Activity implements View.OnClickListener {
 	private Button btnQuery;
@@ -49,8 +49,10 @@ public class TestCntProvider extends Activity implements View.OnClickListener {
 	private void getContactsData() {
 		String[] proj = new String[] { Contacts._ID, Contacts.DISPLAY_NAME,
 				Contacts.HAS_PHONE_NUMBER };
+		String selection = Contacts.HAS_PHONE_NUMBER + " = ?";
+		String[] selectionArgs = { "1" };
 		// 連絡先を取得
-		Cursor cur = managedQuery(Contacts.CONTENT_URI, proj, null, null,
+		Cursor cur = managedQuery(Contacts.CONTENT_URI, proj, selection, selectionArgs,
 				Contacts.DISPLAY_NAME + " ASC");
 
 		// 結果が空なら戻る
