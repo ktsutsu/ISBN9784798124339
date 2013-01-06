@@ -3,6 +3,7 @@ package com.example.testcntprovider;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class TestCntProvider extends Activity {
 	private Button btnQuery;
 	private Button btnTel;
+	private Button btnEmail;
 	private TextView txtView;
 
 	@Override
@@ -50,6 +52,20 @@ public class TestCntProvider extends Activity {
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(btnTel);
+
+		// メールアドレス取得ボタンを作成
+		btnEmail = new Button(this);
+		btnEmail.setText("メールアドレス取得");
+		btnEmail.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getEmailData();
+			}
+		});
+		btnEmail.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(btnEmail);
 
 		// 取得結果表示エリアを作成
 		txtView = new TextView(this);
@@ -155,6 +171,55 @@ public class TestCntProvider extends Activity {
 			buff.append(name);
 			buff.append(" : ");
 			buff.append(number);
+			buff.append("\n");
+		} while (cur.moveToNext());
+		cur.close();
+		txtView.setText(buff.toString());
+	}
+
+	// メールアドレスを取得して、結果エリアに表示する
+	private void getEmailData() {
+		String[] proj = new String[] {
+				Email._ID,
+				Email.CONTACT_ID,
+				Email.DATA1
+		};
+		Cursor cur = managedQuery(
+				Email.CONTENT_URI,
+				proj,
+				null,
+				null,
+				Email._ID + " ASC"
+				);
+
+		// 結果が空なら戻る
+		if (!cur.moveToFirst()) {
+			txtView.setText("");
+			return;
+		}
+
+		StringBuffer buff = new StringBuffer();
+		String _id;
+		String contact_id;
+		String data1;
+		// カラム名からインデックスを取得
+		int _idColumn = cur
+				.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Email._ID);
+		int contact_idColumn = cur
+				.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Email.CONTACT_ID);
+		int data1Column = cur
+				.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Email.DATA1);
+		do {
+			// フィールド値を取得する
+			_id = cur.getString(_idColumn);
+			contact_id = cur.getString(contact_idColumn);
+			data1 = cur.getString(data1Column);
+
+			buff.append(_id);
+			buff.append(" : ");
+			buff.append(contact_id);
+			buff.append(" : ");
+			buff.append(data1);
 			buff.append("\n");
 		} while (cur.moveToNext());
 		cur.close();
