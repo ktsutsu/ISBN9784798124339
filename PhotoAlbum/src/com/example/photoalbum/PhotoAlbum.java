@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class PhotoAlbum extends Activity {
     private TextView txtView;
+    private ImageView imgView;
 
     /**
      * Called when the activity is first created.
@@ -30,5 +32,13 @@ public class PhotoAlbum extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         layout.addView(txtView);
+
+        // ImageViewの生成
+        imgView = new ImageView(this);
+        imgView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        layout.addView(imgView);
     }
 }
