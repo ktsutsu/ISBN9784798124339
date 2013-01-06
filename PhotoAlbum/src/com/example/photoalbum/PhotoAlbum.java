@@ -9,10 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.*;
 
 import java.util.ArrayList;
 
@@ -57,6 +56,7 @@ public class PhotoAlbum extends Activity {
         // ギャラリーの生成
         gallery = new Gallery(this);
         gallery.setSpacing(3);
+        gallery.setAdapter(new GalleryAdapter());
         gallery.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -104,6 +104,29 @@ public class PhotoAlbum extends Activity {
             return bmp;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public class GalleryAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
         }
     }
 }
