@@ -1,15 +1,22 @@
 package com.example.photoalbum;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class PhotoAlbum extends Activity {
+    private ArrayList<String> fileList = new ArrayList<String>();
+    private ArrayList<Long> dateList = new ArrayList<Long>();
     private Gallery gallery;
     private TextView txtView;
     private ImageView imgView;
@@ -25,6 +32,23 @@ public class PhotoAlbum extends Activity {
         layout.setBackgroundColor(Color.rgb(0, 0, 255));
         layout.setGravity(Gravity.CENTER_HORIZONTAL);
         setContentView(layout);
+
+        // ギャラリー写真の取得
+        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Cursor cur = this.managedQuery(uri, null, null, null, null);
+
+        cur.moveToFirst();
+        for (int i = 0; i < cur.getCount(); i++) {
+            String path = cur.getString(cur.getColumnIndexOrThrow("_data"));
+            long datetaken = cur.getLong(cur.getColumnIndexOrThrow("datetaken"));
+            fileList.add(path);
+            dateList.add(datetaken);
+            // デバッグ用にログ出力
+            for (String column : cur.getColumnNames()) {
+                android.util.Log.v("columnName", column + "=" + cur.getString(cur.getColumnIndexOrThrow(column)));
+            }
+            cur.moveToNext();
+        }
 
         // ギャラリーの生成
         gallery = new Gallery(this);
