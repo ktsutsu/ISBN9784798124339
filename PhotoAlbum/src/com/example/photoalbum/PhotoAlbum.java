@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class PhotoAlbum extends Activity {
+    private Gallery gallery;
     private TextView txtView;
     private ImageView imgView;
 
@@ -23,6 +25,15 @@ public class PhotoAlbum extends Activity {
         layout.setBackgroundColor(Color.rgb(0, 0, 255));
         layout.setGravity(Gravity.CENTER_HORIZONTAL);
         setContentView(layout);
+
+        // ギャラリーの生成
+        gallery = new Gallery(this);
+        gallery.setSpacing(3);
+        gallery.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        layout.addView(gallery);
 
         // TextViewの生成
         txtView = new TextView(this);
