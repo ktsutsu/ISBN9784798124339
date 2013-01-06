@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -111,22 +112,35 @@ public class PhotoAlbum extends Activity {
 
         @Override
         public int getCount() {
-            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+            return photoList.size();
         }
 
         @Override
         public Object getItem(int i) {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            return i;
         }
 
         @Override
         public long getItemId(int i) {
-            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+            return 0;
         }
 
+        // ギャラリーをスライドするたびに呼び出される
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            ImageView imageView;
+            if (view == null) {
+                // 新規表示のため、ImageView生成
+                imageView = new ImageView(PhotoAlbum.this);
+                imageView.setLayoutParams(new Gallery.LayoutParams(150, 150));
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setBackgroundColor(Color.BLACK);
+                BitmapDrawable bd = new BitmapDrawable(photoList.get(i));
+                imageView.setImageDrawable(bd);
+            } else {
+                imageView = (ImageView) view;
+            }
+            return imageView;
         }
     }
 }
