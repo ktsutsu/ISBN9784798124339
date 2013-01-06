@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import android.widget.*;
 
 import java.util.ArrayList;
 
-public class PhotoAlbum extends Activity {
+public class PhotoAlbum extends Activity implements AdapterView.OnItemClickListener {
     private ArrayList<Bitmap> photoList = new ArrayList<Bitmap>();
     private ArrayList<String> fileList = new ArrayList<String>();
     private ArrayList<Long> dateList = new ArrayList<Long>();
@@ -58,6 +59,7 @@ public class PhotoAlbum extends Activity {
         gallery = new Gallery(this);
         gallery.setSpacing(3);
         gallery.setAdapter(new GalleryAdapter());
+        gallery.setOnItemClickListener(this);
         gallery.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -80,6 +82,16 @@ public class PhotoAlbum extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         layout.addView(imgView);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (adapterView == gallery) {
+            android.util.Log.v("position", i + "=" + fileList.get(i));
+            Bitmap bigPicture = file2bmp(fileList.get(i), 400, 400);
+            imgView.setImageBitmap(bigPicture);
+            txtView.setText(DateFormat.format("yyyy-MM-dd kk:mm:ss", dateList.get(i)).toString());
+        }
     }
 
     // 画像を指定した幅と高さにリサイズする
