@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 public class RecognizeTo extends Activity {
     private Button btnStart;
+    private Button btnSend;
 
     /**
      * Called when the activity is first created.
@@ -25,5 +26,13 @@ public class RecognizeTo extends Activity {
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.addView(btnStart);
+
+        // 転送ボタンを生成
+        btnSend = new Button(this);
+        btnSend.setText("転送");
+        btnSend.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        layout.addView(btnSend);
     }
 }
