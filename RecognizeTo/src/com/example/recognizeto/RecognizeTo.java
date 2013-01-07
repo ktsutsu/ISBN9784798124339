@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class RecognizeTo extends Activity implements View.OnClickListener {
     private static final int REQUEST_CODE = 0;
     private Button btnStart;
@@ -73,5 +75,18 @@ public class RecognizeTo extends Activity implements View.OnClickListener {
             intent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            String resStr = "";
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            for (int i = 0; i < results.size(); i++) {
+                resStr += results.get(i);
+            }
+            editText.setText(editText.getText() + resStr);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
