@@ -2,6 +2,7 @@ package com.example.testrecognizerintent;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class TestRecognizerIntent extends Activity {
     /**
@@ -10,5 +11,8 @@ public class TestRecognizerIntent extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        setContentView(layout);
     }
 }
