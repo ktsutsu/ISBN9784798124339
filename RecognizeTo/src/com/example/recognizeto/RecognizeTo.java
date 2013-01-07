@@ -2,11 +2,12 @@ package com.example.recognizeto;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-public class RecognizeTo extends Activity {
+public class RecognizeTo extends Activity implements View.OnClickListener {
     private Button btnStart;
     private Button btnSend;
     private EditText editText;
@@ -44,5 +45,10 @@ public class RecognizeTo extends Activity {
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.addView(editText);
+    }
+
+    @Override
+    public void onClick(View view) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
