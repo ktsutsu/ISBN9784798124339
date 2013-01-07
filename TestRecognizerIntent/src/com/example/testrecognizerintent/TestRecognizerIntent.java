@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class TestRecognizerIntent extends Activity implements View.OnClickListener {
     private static final int REQUEST_CODE = 0;
     private Button btnStart;
@@ -51,5 +53,19 @@ public class TestRecognizerIntent extends Activity implements View.OnClickListen
             // 音声認識機能がない場合エラーをトースト表示
             Toast.makeText(TestRecognizerIntent.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            // 結果を直結してトースト表示する
+            String resStr = "";
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            for (int i = 0; i < results.size(); i++) {
+                resStr += results.get(i);
+            }
+            Toast.makeText(this, resStr, Toast.LENGTH_LONG).show();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
