@@ -39,6 +39,7 @@ public class RecognizeTo extends Activity implements View.OnClickListener {
         // 転送ボタンを生成
         btnSend = new Button(this);
         btnSend.setText("転送");
+        btnSend.setOnClickListener(this);
         btnSend.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -66,6 +67,11 @@ public class RecognizeTo extends Activity implements View.OnClickListener {
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(RecognizeTo.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
+        } else if (view == btnSend) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
+            startActivity(intent);
         }
     }
 }
