@@ -3,11 +3,13 @@ package com.example.recognizeto;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class RecognizeTo extends Activity {
     private Button btnStart;
     private Button btnSend;
+    private EditText editText;
 
     /**
      * Called when the activity is first created.
@@ -34,5 +36,13 @@ public class RecognizeTo extends Activity {
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.addView(btnSend);
+
+        // 結果表示エリアを生成
+        editText = new EditText(this);
+        editText.setText("");
+        editText.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        layout.addView(editText);
     }
 }
