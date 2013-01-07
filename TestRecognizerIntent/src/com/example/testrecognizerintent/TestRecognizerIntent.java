@@ -2,10 +2,11 @@ package com.example.testrecognizerintent;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class TestRecognizerIntent extends Activity {
+public class TestRecognizerIntent extends Activity implements View.OnClickListener {
     private Button btnStart;
 
     /**
@@ -26,5 +27,10 @@ public class TestRecognizerIntent extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         layout.addView(btnStart);
+    }
+
+    @Override
+    public void onClick(View view) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
