@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
@@ -26,6 +27,7 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 	private EditText edit03;
 	private Button btnConnect;
 	private TextView txtView;
+	private ScrollView scView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +70,20 @@ public class ServerCheck extends Activity implements View.OnClickListener {
 				LinearLayout.LayoutParams.WRAP_CONTENT));
 		layout.addView(btnConnect);
 
+		// 結果表示エリア用スクロールビュー作成
+		scView = new ScrollView(this);
+		scView.setLayoutParams(new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.addView(scView);
+
 		// 接続結果表示エリア作成
 		txtView = new TextView(this);
 		txtView.setText("接続結果をここに表示します。");
 		txtView.setLayoutParams(new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
-		layout.addView(txtView);
+		scView.addView(txtView);
 	}
 
 	@Override
