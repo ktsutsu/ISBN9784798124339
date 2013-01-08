@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.util.ArrayList;
 
@@ -18,6 +15,7 @@ public class RecognizeTo extends Activity implements View.OnClickListener {
     private Button btnStart;
     private Button btnSend;
     private EditText editText;
+    private ScrollView scView;
 
     /**
      * Called when the activity is first created.
@@ -47,13 +45,20 @@ public class RecognizeTo extends Activity implements View.OnClickListener {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.addView(btnSend);
 
+        // 結果表示用スクロールビューを生成
+        scView = new ScrollView(this);
+        scView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        layout.addView(scView);
+
         // 結果表示エリアを生成
         editText = new EditText(this);
         editText.setText("");
         editText.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        layout.addView(editText);
+        scView.addView(editText);
     }
 
     @Override
